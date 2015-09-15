@@ -65,14 +65,14 @@ class OptimizePress_Shortcode_Manipulation
             $this->settingsPage,
             array($this,'op_shorcode_settings_page')
         );
-        add_action( "load-{$settings_page}", array($this, 'streemfire_load_settings_page') );
+        add_action( "load-{$settings_page}", array($this, 'op_load_settings_page') );
     }
 
     /**
      * Saves users settings
      * @return mixed
      */
-    public function streemfire_load_settings_page(){
+    public function op_load_settings_page(){
         if (isset($_POST["op-tag-settings-submit"])) {
             if ($_POST["op-tag-settings-submit"] == 'Y') {
                 check_admin_referer($this->adminNonce, $this->adminNonce);
