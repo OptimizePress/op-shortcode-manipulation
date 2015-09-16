@@ -152,8 +152,14 @@ class OptimizePress_Shortcode_Manipulation
                 $pageBuilder = ($_GET['page'] == 'optimizepress-page-builder' ) ? true : false;
             }
         }
+        $liveEditorAjaxInsert = false;
+        if ( isset($_REQUEST) ) {
+            if (array_key_exists('action', $_REQUEST)) {
+                $liveEditorAjaxInsert = ($_REQUEST['action'] == 'optimizepress-live-editor-parse' ) ? true : false;
+            }
+        }
 
-        if ( ($checkIfLEPage == 'Y') || $pageBuilder){
+        if ( ($checkIfLEPage == 'Y') || $pageBuilder || $liveEditorAjaxInsert ){
             global $shortcode_tags;
             $user_settings = get_option( $this->userSettings );
             $user_settings = (!is_array($user_settings)) ? array() : $user_settings;
